@@ -25,5 +25,10 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
+
+        if (!isset($_SESSION['user'])) {
+            $_SESSION['user'] = '';
+        }
+        $this->twig->addGlobal('user', $_SESSION['user']); // Super globale
     }
 }
